@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage({Key? key}) : super(key: key);
   static final String id = "detail_page";
+
+  String? input;
+  DetailPage({this.input});
+
   @override
   _DetailPageState createState() => _DetailPageState();
 }
@@ -12,7 +15,7 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Welcome to Details"),
+        child: Text("Welcome to details"),
       ),
     );
   }
