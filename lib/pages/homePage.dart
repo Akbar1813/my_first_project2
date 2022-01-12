@@ -8,17 +8,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String data = "Open Details";
+  Future _openDetails() async{
+
+    Map results = await Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context){
+          return DetailPage(input: "Assalomu alaykum");
+        }
+    ));
+
+    if(results != null && results.containsKey('data')){
+     setState(() {
+       data = results['data'];
+     });
+    }else{
+      print("Nothing");
+    }
+  }
+
   @override
-  String input = "Open Details";
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: FlatButton(
           onPressed: (){
-            Navigator.pushNamed(context, DetailPage.id);
+            _openDetails();
+            //Navigator.pushReplacementNamed(context, DetailPage.id);
           },
           color: Colors.amber,
-          child: Text(input),
+          child: Text(data),
         )
       ),
     );
